@@ -1,0 +1,40 @@
+<codigo> ::= <linha>*
+
+<linha> ::= (<declaracao> | <atribuicao> | <operacao> | <controle_fluxo> | <chamada_funcao>) ";"
+
+<declaracao> ::= <tipo> <nome>
+
+<atribuicao> ::= <nome> "=" (<numero> | <string> | <expressao> | <chamada_funcao>)
+
+<operacao> ::= <expressao>
+
+<expressao> ::= <termo> ((<operador_aritmetico> | <operador_logico>) <termo>)*
+<termo> ::= <numero> | <nome> | "(" <expressao> ")"
+
+<operador_aritmetico> ::= "+" | "-" | "*" | "/"
+<operador_logico> ::= "&&" | "||"
+
+<controle_fluxo> ::= <if_statement> | <while_loop> | "break"
+
+<if_statement> ::= "if" "(" <condicao> ")" "{" <codigo> "}" ("else" "{" <codigo> "}")?
+
+<while_loop> ::= "while" "(" <condicao> ")" "{" <codigo> "}"
+
+<condicao> ::= <nome> <operador_comparacao> (<numero> | <nome>)
+<operador_comparacao> ::= "!=" | ">" | "<" | "==" | "<=" | ">="
+
+<funcao> ::= "func" <nome> "(" <parametros_funcao>? ")" "{" <codigo> "}"
+
+<parametros_funcao> ::= <parametro> ("," <parametro>)*
+
+<parametro> ::= <tipo> <nome>
+
+<chamada_funcao> ::= <nome> "(" <argumentos_funcao>? ")"
+
+<argumentos_funcao> ::= <expressao> ("," <expressao>)*
+
+<tipo> ::= "int" | "char"
+
+<numero> ::= [1-9][0-9]* | "0"
+<string> ::= "'" ([A-Z]|[a-z]|[0-9]|" ")* "'"
+<nome> ::= ([A-Z]|[a-z])([A-Z]|[a-z]|[0-9]|"_")*
